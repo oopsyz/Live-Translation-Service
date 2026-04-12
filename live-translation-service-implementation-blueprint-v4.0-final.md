@@ -527,30 +527,30 @@ graph TB
  B_Out[B-Leg Outbound<br/>Translation of A to B]
  end
  
- A_Leg ---->> EC_A
- EC_A ---->> NS_A
- NS_A ---->> VAD_A
- VAD_A ---->> SD_A
- SD_A ---->> ASR_A
- ASR_A ---->> MT_AtoB
- MT_AtoB ---->> TTS_AtoB
- TTS_AtoB ---->> MX_A
- MX_A ---->> CB
+ A_Leg --> EC_A
+ EC_A --> NS_A
+ NS_A --> VAD_A
+ VAD_A --> SD_A
+ SD_A --> ASR_A
+ ASR_A --> MT_AtoB
+ MT_AtoB --> TTS_AtoB
+ TTS_AtoB --> MX_A
+ MX_A --> CB
  
- B_Leg ---->> EC_B
- EC_B ---->> NS_B
- NS_B ---->> VAD_B
- VAD_B ---->> SD_B
- SD_B ---->> ASR_B
- ASR_B ---->> MT_BtoA
- MT_BtoA ---->> TTS_BtoA
- TTS_BtoA ---->> MX_B
- MX_B ---->> CB
+ B_Leg --> EC_B
+ EC_B --> NS_B
+ NS_B --> VAD_B
+ VAD_B --> SD_B
+ SD_B --> ASR_B
+ ASR_B --> MT_BtoA
+ MT_BtoA --> TTS_BtoA
+ TTS_BtoA --> MX_B
+ MX_B --> CB
  
- CB ---->> A_Out
- CB ---->> B_Out
+ CB --> A_Out
+ CB --> B_Out
  
- CB ---->> PT
+ CB --> PT
  PT -.-> B_Out
  PT -.-> A_Out
 ```
@@ -606,12 +606,12 @@ graph TB
  end
  D1{Valid CALEA Order}
  
- A1 ---->> ASR
- T1 ---->> MT
- T2 ---->> TTS
- ASR ---->> B2
- MT ---->> B3
- TTS ---->> A_Out
+ A1 --> ASR
+ T1 --> MT
+ T2 --> TTS
+ ASR --> B2
+ MT --> B3
+ TTS --> A_Out
  B1 -.-> N1
  B2 -.-> N2
  B3 -.-> N3
@@ -619,11 +619,11 @@ graph TB
  ASR -.-> L1
  MT -.-> L1
  TTS -.-> L1
- A1 ---->> D1
- D1 ---->>|Yes| C1
- C1 ---->> C2
- C2 ---->> C3
- C3 ---->> C4
+ A1 --> D1
+ D1 -->|Yes| C1
+ C1 --> C2
+ C2 --> C3
+ C3 --> C4
 ```
 
 ### 4.5 Graceful Degradation Architecture
@@ -647,14 +647,14 @@ graph TB
  Direct[Direct Audio Path]
  end
  
- Health ---->> Router
- Router ---->> D1{MEC Healthy}
- D1 ---->>|Yes| MEC_Translation
- MEC_Translation ---->> Router
- D1 ---->>|No| D2{Cloud Available}
- D2 ---->>|Yes| Cloud_Translation
- Cloud_Translation ---->> Router
- D2 ---->>|No| Direct
+ Health --> Router
+ Router --> D1{MEC Healthy}
+ D1 -->|Yes| MEC_Translation
+ MEC_Translation --> Router
+ D1 -->|No| D2{Cloud Available}
+ D2 -->|Yes| Cloud_Translation
+ Cloud_Translation --> Router
+ D2 -->|No| Direct
  Direct -.-> Router
 ```
 
@@ -836,26 +836,26 @@ graph TB
  end
  end
  
- Service ---->> CRM
- Service ---->> BRM
- Service ---->> OMS
- CRM ---->> Rating
- CRM ---->> Invoicing
- OMS ---->> Provisioning
- Provisioning ---->> Service
- Service ---->> NMS
- Service ---->> Resource
- Service ---->> ServiceInst
- Service ---->> FM
- Service ---->> PM
- Service ---->> TM
- Service ---->> SA
- FM ---->> CMDB
- PM ---->> CMDB
- SA ---->> CMDB
- CMDB ---->> ChangeMgmt
- SelfCare ---->> CRM
- MobileApp ---->> CRM
+ Service --> CRM
+ Service --> BRM
+ Service --> OMS
+ CRM --> Rating
+ CRM --> Invoicing
+ OMS --> Provisioning
+ Provisioning --> Service
+ Service --> NMS
+ Service --> Resource
+ Service --> ServiceInst
+ Service --> FM
+ Service --> PM
+ Service --> TM
+ Service --> SA
+ FM --> CMDB
+ PM --> CMDB
+ SA --> CMDB
+ CMDB --> ChangeMgmt
+ SelfCare --> CRM
+ MobileApp --> CRM
 ```
 
 ### 5.3 Business Support Systems (BSS)
@@ -888,17 +888,17 @@ graph TB
  TS[Translation Platform]
  end
  
- TS ---->> P1
- TS ---->> P2
- TS ---->> P3
- TS ---->> P4
- P1 ---->> C1
- P2 ---->> C2
- P3 ---->> C3
- P4 ---->> C4
- TS ---->> H1
- TS ---->> H2
- TS ---->> H3
+ TS --> P1
+ TS --> P2
+ TS --> P3
+ TS --> P4
+ P1 --> C1
+ P2 --> C2
+ P3 --> C3
+ P4 --> C4
+ TS --> H1
+ TS --> H2
+ TS --> H3
 ```
 
 **CRM Requirements:**
@@ -945,14 +945,14 @@ graph LR
  M3[Enterprise Custom]
  end
  
- TS ---->> Events
- Events ---->> R1
- R1 ---->> C1
- C1 ---->> I1
- C2 ---->> I1
- R2 ---->> M1
- R2 ---->> M2
- R2 ---->> M3
+ TS --> Events
+ Events --> R1
+ R1 --> C1
+ C1 --> I1
+ C2 --> I1
+ R2 --> M1
+ R2 --> M2
+ R2 --> M3
 ```
 
 **Billing Requirements (Subscription Model):**
@@ -1075,24 +1075,24 @@ graph TB
  AD3[Service Health Checks]
  end
  
- TS ---->> N1
- TS ---->> N2
- TS ---->> N3
- TS ---->> R1
- TS ---->> R2
- TS ---->> R3
- TS ---->> S1
- TS ---->> S2
- TS ---->> S3
- AD1 ---->> N1
- AD1 ---->> N2
- AD1 ---->> N3
- AD2 ---->> R1
- AD2 ---->> R2
- AD2 ---->> R3
- AD3 ---->> S1
- AD3 ---->> S2
- AD3 ---->> S3
+ TS --> N1
+ TS --> N2
+ TS --> N3
+ TS --> R1
+ TS --> R2
+ TS --> R3
+ TS --> S1
+ TS --> S2
+ TS --> S3
+ AD1 --> N1
+ AD1 --> N2
+ AD1 --> N3
+ AD2 --> R1
+ AD2 --> R2
+ AD2 --> R3
+ AD3 --> S1
+ AD3 --> S2
+ AD3 --> S3
 ```
 
 **Inventory Requirements:**
@@ -1135,18 +1135,18 @@ graph TB
  TS[Translation Platform]
  end
  
- TS ---->> D1
- TS ---->> D2
- TS ---->> D3
- D1 ---->> C1
- D1 ---->> C2
- D1 ---->> C3
- C1 ---->> E1
- C2 ---->> E2
- C3 ---->> E3
- E1 ---->> R1
- E2 ---->> R2
- E3 ---->> R3
+ TS --> D1
+ TS --> D2
+ TS --> D3
+ D1 --> C1
+ D1 --> C2
+ D1 --> C3
+ C1 --> E1
+ C2 --> E2
+ C3 --> E3
+ E1 --> R1
+ E2 --> R2
+ E3 --> R3
 ```
 
 **Fault Management Requirements:**
@@ -1193,19 +1193,19 @@ graph LR
  M4[Resource Utilization]
  end
  
- TS ---->> DC1
- TS ---->> DC2
- TS ---->> DC3
- DC1 ---->> M1
- DC1 ---->> M2
- DC1 ---->> M3
- DC1 ---->> M4
- M1 ---->> PA1
- M2 ---->> PA2
- M3 ---->> PA3
- PA1 ---->> PO1
- PA2 ---->> PO2
- PA3 ---->> PO3
+ TS --> DC1
+ TS --> DC2
+ TS --> DC3
+ DC1 --> M1
+ DC1 --> M2
+ DC1 --> M3
+ DC1 --> M4
+ M1 --> PA1
+ M2 --> PA2
+ M3 --> PA3
+ PA1 --> PO1
+ PA2 --> PO2
+ PA3 --> PO3
 ```
 
 **Performance Metrics:**
@@ -1254,19 +1254,19 @@ graph TB
  QA3[Model Tuning]
  end
  
- AT1 ---->> TS
- AT2 ---->> TS
- AT3 ---->> TS
- TS ---->> PM1
- PM1 ---->> QA1
- QA1 ---->> QA2
- QA2 ---->> QA3
- QA3 ---->> R2
- AT1 ---->> R1
- PM2 ---->> R2
- PM3 ---->> R2
- R1 ---->> R3
- R2 ---->> R3
+ AT1 --> TS
+ AT2 --> TS
+ AT3 --> TS
+ TS --> PM1
+ PM1 --> QA1
+ QA1 --> QA2
+ QA2 --> QA3
+ QA3 --> R2
+ AT1 --> R1
+ PM2 --> R2
+ PM3 --> R2
+ R1 --> R3
+ R2 --> R3
 ```
 
 **Service Assurance Requirements:**
@@ -1307,20 +1307,20 @@ graph TB
  TS[Translation Platform]
  end
  
- TS ---->> CI1
- TS ---->> CI2
- TS ---->> CI3
- TS ---->> CI4
- CI1 ---->> CH1
- CI2 ---->> CH1
- CI3 ---->> CH1
- CI4 ---->> CH1
- CH1 ---->> CH2
- CH2 ---->> CH3
- CI3 ---->> VC2
- CH3 ---->> VC1
- CH3 ---->> VC2
- CH3 ---->> VC3
+ TS --> CI1
+ TS --> CI2
+ TS --> CI3
+ TS --> CI4
+ CI1 --> CH1
+ CI2 --> CH1
+ CI3 --> CH1
+ CI4 --> CH1
+ CH1 --> CH2
+ CH2 --> CH3
+ CI3 --> VC2
+ CH3 --> VC1
+ CH3 --> VC2
+ CH3 --> VC3
 ```
 
 **Configuration Management Requirements:**
