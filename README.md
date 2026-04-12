@@ -18,11 +18,12 @@ The **Live Translation Service** enables subscribers to communicate across langu
 
 For the full technical specification, architectural diagrams, and BSS/OSS integration strategy, please refer to the core blueprint:
 
-### [ View the Implementation Blueprint V3.1](live-translation-service-implementation-blueprint-v3.md)
+### [ View the Implementation Blueprint V4.0 Final](live-translation-service-implementation-blueprint-v4.0-final.md)
 
 **Blueprint Highlights:**
+* **5G-Advanced Technical Core:** PDU Sets, NWDAF-guided orchestration, and intelligent edge placement (Rel-18 aligned).
+* **TMF ODA Integration:** TM Forum-aligned Open Digital Architecture (ODA) and BSS/OSS traceability.
 * **System Architecture:** Detailed media processing paths and IMS integration.
-* **BSS/OSS Matrix:** TM Forum-aligned process mappings (eTOM/ODA).
 * **Implementation Roadmap:** A 30-month phased rollout strategy from MVP to Enterprise GA.
 * **Risk Assessment:** Comprehensive analysis of latency SLAs and regulatory compliance (CALEA/GDPR).
 
